@@ -12,11 +12,9 @@ import {
 import { MemeContext } from "./context/memeContext";
 import { exportComponentAsJPEG } from "react-component-export-image";
 import React, { useRef } from "react";
-const ComponentToPrint = React.forwardRef((props, ref) => (
-  <div ref={ref}>Hello World</div>
-));
+
 export default function Home() {
-  Home.displayName = "MyApp";
+ 
   const componentRef = useRef();
   let Draggable = require("react-draggable");
   let DraggableCore = Draggable.DraggableCore;
