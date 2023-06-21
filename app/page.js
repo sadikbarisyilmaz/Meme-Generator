@@ -101,7 +101,7 @@ export default function Home() {
           )}
         </div>
 
-        <div className="lg:border-l-2 border-t-2 p-8 grid gap-4">
+        <div className="lg:border-l-2 border-t-2 lg:border-t-0 p-8 grid gap-4">
           <div className="">
             <div className="mb-2">
               <div className="mb-1 block">
