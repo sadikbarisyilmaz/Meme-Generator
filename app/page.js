@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import {
   Label,
   Radio,
@@ -10,12 +10,7 @@ import {
   Spinner,
 } from "flowbite-react";
 import { MemeContext } from "./context/memeContext";
-import Draggable, { DraggableCore } from "react-draggable";
-import {
-  exportComponentAsJPEG,
-  exportComponentAsPDF,
-  exportComponentAsPNG,
-} from "react-component-export-image";
+import { exportComponentAsJPEG } from "react-component-export-image";
 import React, { useRef } from "react";
 const ComponentToPrint = React.forwardRef((props, ref) => (
   <div ref={ref}>Hello World</div>
@@ -27,23 +22,23 @@ export default function Home() {
   const { randomMeme, getRandomMeme, memes } = useContext(MemeContext);
 
   const [memeValues, setMemeValues] = useState({
-    topText: "Top",
-    bottomText: "Bottom",
+    topText: "Top Text",
+    bottomText: "Bottom Text",
     caps: "uppercase",
     color: "white",
     shadow: "1px 1px 17px rgba(0,0,0,0.83)",
-    size: 1,
+    size: 2,
     font: "serif",
   });
 
   const resetHandler = () => {
     setMemeValues({
-      topText: "Top",
-      bottomText: "Bottom",
+      topText: "Top Text",
+      bottomText: "Bottom Text",
       caps: "uppercase",
       color: "white",
       shadow: "1px 1px 17px rgba(0,0,0,0.83)",
-      size: 1,
+      size: 2,
       font: "Sans",
     });
   };
