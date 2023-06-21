@@ -16,6 +16,7 @@ const ComponentToPrint = React.forwardRef((props, ref) => (
   <div ref={ref}>Hello World</div>
 ));
 export default function Home() {
+  Home.displayName = "MyApp";
   const componentRef = useRef();
   let Draggable = require("react-draggable");
   let DraggableCore = Draggable.DraggableCore;
