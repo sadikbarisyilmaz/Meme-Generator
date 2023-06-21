@@ -11,8 +11,17 @@ import {
 } from "flowbite-react";
 import { MemeContext } from "./context/memeContext";
 import Draggable, { DraggableCore } from "react-draggable";
-
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPDF,
+  exportComponentAsPNG,
+} from "react-component-export-image";
+import React, { useRef } from "react";
+const ComponentToPrint = React.forwardRef((props, ref) => (
+  <div ref={ref}>Hello World</div>
+));
 export default function Home() {
+  const componentRef = useRef();
   let Draggable = require("react-draggable");
   let DraggableCore = Draggable.DraggableCore;
   const { randomMeme, getRandomMeme, memes } = useContext(MemeContext);
@@ -50,8 +59,8 @@ export default function Home() {
         className="grid lg:grid-cols-2 gap-4 max-w-screen-lg p-8 border-2  justify-center drop-shadow-xl"
       >
         <div className=" flex flex-col gap-20 p-10">
-          <div className="text-center">
-            <h1 className="text-3xl mb-3">Welcome to Meme Generator !</h1>
+          <div className="text-center grid gap-2">
+            <h1 className="text-3xl">Welcome to Meme Generator !</h1>
             <p>
               Click{" "}
               <button className="text-blue-400" onClick={getRandomMeme}>
@@ -61,7 +70,7 @@ export default function Home() {
             </p>
           </div>
           {randomMeme ? (
-            <div className="relative">
+            <div ref={componentRef} className="relative">
               {randomMeme && <img src={randomMeme.url} alt="" />}
               {memeValues.topText && (
                 <Draggable>
@@ -106,6 +115,12 @@ export default function Home() {
               />
             </div>
           )}
+          <Button
+            color="light"
+            onClick={() => exportComponentAsJPEG(componentRef)}
+          >
+            Export As JPEG
+          </Button>
         </div>
 
         <div className="lg:border-l-2 border-t-2 lg:border-t-0 p-8 grid gap-4">
