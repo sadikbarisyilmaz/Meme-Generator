@@ -10,8 +10,11 @@ import {
   Spinner,
 } from "flowbite-react";
 import { MemeContext } from "./context/memeContext";
+import Draggable, { DraggableCore } from "react-draggable";
 
 export default function Home() {
+  let Draggable = require("react-draggable");
+  let DraggableCore = Draggable.DraggableCore;
   const { randomMeme, getRandomMeme, memes } = useContext(MemeContext);
 
   const [memeValues, setMemeValues] = useState({
@@ -61,32 +64,36 @@ export default function Home() {
             <div className="relative">
               {randomMeme && <img src={randomMeme.url} alt="" />}
               {memeValues.topText && (
-                <span
-                  className={`font-extrabold  ${memeValues.caps}`}
-                  style={{
-                    fontFamily: `${memeValues.font}`,
-                    textShadow: `${memeValues.shadow}`,
-                    color: `${memeValues.color}`,
-                    fontSize: `${memeValues.size}rem`,
-                  }}
-                  id="top"
-                >
-                  {memeValues.topText}
-                </span>
+                <Draggable>
+                  <p
+                    className={`font-extrabold  ${memeValues.caps}`}
+                    style={{
+                      fontFamily: `${memeValues.font}`,
+                      textShadow: `${memeValues.shadow}`,
+                      color: `${memeValues.color}`,
+                      fontSize: `${memeValues.size}rem`,
+                    }}
+                    id="top"
+                  >
+                    {memeValues.topText}
+                  </p>
+                </Draggable>
               )}
               {memeValues.bottomText && (
-                <span
-                  id="bottom"
-                  className={`font-extrabold  ${memeValues.caps}`}
-                  style={{
-                    fontFamily: `${memeValues.font}`,
-                    textShadow: `${memeValues.shadow}`,
-                    color: `${memeValues.color}`,
-                    fontSize: `${memeValues.size}rem`,
-                  }}
-                >
-                  {memeValues.bottomText}
-                </span>
+                <Draggable>
+                  <p
+                    id="bottom"
+                    className={`font-extrabold  ${memeValues.caps}`}
+                    style={{
+                      fontFamily: `${memeValues.font}`,
+                      textShadow: `${memeValues.shadow}`,
+                      color: `${memeValues.color}`,
+                      fontSize: `${memeValues.size}rem`,
+                    }}
+                  >
+                    {memeValues.bottomText}
+                  </p>
+                </Draggable>
               )}
             </div>
           ) : (
