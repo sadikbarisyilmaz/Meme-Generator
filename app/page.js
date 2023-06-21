@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   Label,
   Radio,
@@ -14,9 +14,14 @@ import { exportComponentAsJPEG } from "react-component-export-image";
 import React, { useRef } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    window.navigator.geolocation.getCurrentPosition(
+      (newPos) => setPosition(newPos),
+      console.error
+    );
+  }, []);
   const componentRef = useRef();
   let Draggable = require("react-draggable");
-  let DraggableCore = Draggable.DraggableCore;
   const { randomMeme, getRandomMeme, memes } = useContext(MemeContext);
 
   const [memeValues, setMemeValues] = useState({
