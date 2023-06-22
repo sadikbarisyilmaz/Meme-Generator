@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import {
   Label,
   Radio,
@@ -10,17 +10,18 @@ import {
   Spinner,
 } from "flowbite-react";
 import { MemeContext } from "./context/memeContext";
-import { exportComponentAsJPEG } from "react-component-export-image";
-import React, { useRef } from "react";
-
+// import {
+//   exportComponentAsJPEG,
+//   exportComponentAsPDF,
+//   exportComponentAsPNG,
+// } from "react-component-export-image";
+// import { exportComponentAsJPEG } from "react-component-export-image";
+// import React, { useRef } from "react";
+// const ComponentToPrint = React.forwardRef((props, ref) => (
+//   <div ref={ref}>Hello World</div>
+// ));
 export default function Home() {
-  useEffect(() => {
-    window.navigator.geolocation.getCurrentPosition(
-      (newPos) => setPosition(newPos),
-      console.error
-    );
-  }, []);
-  const componentRef = useRef();
+  // const componentRef = useRef();
   let Draggable = require("react-draggable");
   const { randomMeme, getRandomMeme, memes } = useContext(MemeContext);
 
@@ -68,7 +69,7 @@ export default function Home() {
             </p>
           </div>
           {randomMeme ? (
-            <div ref={componentRef} className="relative">
+            <div className="relative">
               {randomMeme && <img src={randomMeme.url} alt="" />}
               {memeValues.topText && (
                 <Draggable>
@@ -113,12 +114,12 @@ export default function Home() {
               />
             </div>
           )}
-          <Button
+          {/* <Button
             color="light"
             onClick={() => exportComponentAsJPEG(componentRef)}
           >
             Export As JPEG
-          </Button>
+          </Button> */}
         </div>
 
         <div className="lg:border-l-2 border-t-2 lg:border-t-0 p-8 grid gap-4">
